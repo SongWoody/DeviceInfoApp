@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">DeviceInfoApp</string>
     <string name="device_model">Device Model</string>
+    <string name="device_brand">Device Brand</string>
 </resources>
