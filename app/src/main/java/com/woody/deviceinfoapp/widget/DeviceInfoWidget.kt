@@ -3,6 +3,7 @@ package com.woody.deviceinfoapp.widget
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.os.Build
 import android.widget.RemoteViews
 import com.woody.deviceinfoapp.R
 
@@ -37,7 +38,7 @@ internal fun updateAppWidget(
 ) {
     // Construct the RemoteViews object
     val views = RemoteViews(context.packageName, R.layout.device_info_widget)
-    views.setTextViewText(R.id.appwidget_text, "hihi")
+    views.setTextViewText(R.id.model_content, Build.MODEL)
 
     // Instruct the widget manager to update the widget
     appWidgetManager.updateAppWidget(appWidgetId, views)
