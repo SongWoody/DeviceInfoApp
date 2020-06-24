@@ -4,8 +4,17 @@ import android.os.Build
 import android.os.Build.VERSION_CODES
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.woody.deviceinfoapp.provider.ClipboardProvider
 
-class MainViewModel : ViewModel() {
+
+class MainViewModelFactory(private val clipboard: ClipboardProvider): ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        return MainViewModel(clipboard) as T
+    }
+}
+
+class MainViewModel(private val clipboard : ClipboardProvider) : ViewModel() {
     val deviceBrand: MutableLiveData<CharSequence> by lazy {
         MutableLiveData<CharSequence>().apply {
             value = Build.BRAND
@@ -50,6 +59,9 @@ class MainViewModel : ViewModel() {
     }
 
     fun clickAction() {
-        //todo clip board
+        val copyText = "Device Brand: ${deviceBrand.value}\n" +
+                "Device Model: ${deviceModel.value}\n" +
+                "Android Version: ${androidVersionNumber.value}"
+        clipboard.clip("deviceInfo",copyText)
     }
 }
