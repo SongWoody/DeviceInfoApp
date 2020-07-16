@@ -39,7 +39,7 @@ internal fun updateAppWidget(
     // Construct the RemoteViews object
     val views = RemoteViews(context.packageName, R.layout.device_info_widget)
     views.setTextViewText(R.id.model_content, Build.MODEL)
-    views.setTextViewText(R.id.brand_title, Build.BRAND)
+    views.setTextViewText(R.id.brand_content, Build.BRAND)
 
     // Instruct the widget manager to update the widget
     appWidgetManager.updateAppWidget(appWidgetId, views)

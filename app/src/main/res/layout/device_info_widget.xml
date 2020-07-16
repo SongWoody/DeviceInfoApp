@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,15 +7,18 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/model_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
         <TextView
             android:id="@+id/model_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:textColor="#ffffff"
-            tools:text="Model: "
+            android:text="@string/widget_model_title"
             android:textSize="12sp"
             android:textStyle="bold" />
 
@@ -25,21 +28,23 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:textColor="#ffffff"
-            tools:text="Model: "
+            tools:text="Model"
             android:textSize="12sp"
             android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/brand_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/model_layout">
         <TextView
             android:id="@+id/brand_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:textColor="#ffffff"
-            tools:text="Model: "
+            android:text="@string/widget_brand_title"
             android:textSize="12sp"
             android:textStyle="bold" />
 
@@ -49,12 +54,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:textColor="#ffffff"
-            tools:text="Model: "
+            tools:text="Brand "
             android:textSize="12sp"
             android:textStyle="bold" />
     </LinearLayout>
-
-
-
-
-</LinearLayout>
+</RelativeLayout>
