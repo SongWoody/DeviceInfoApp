@@ -5,4 +5,5 @@
     <string name="android_version">Android Version</string>
     <string name="widget_model_title">Model:</string>
     <string name="widget_brand_title">Brand:</string>
+    <string name="copy">copy</string>
 </resources>
