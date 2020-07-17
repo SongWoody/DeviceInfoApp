@@ -50,6 +50,7 @@ class DeviceInfoWidget : AppWidgetProvider() {
         val views = RemoteViews(context.packageName, R.layout.device_info_widget)
         views.setTextViewText(R.id.model_content, Build.MODEL)
         views.setTextViewText(R.id.brand_content, Build.BRAND)
+        views.setTextViewText(R.id.version_content, getVersionInfo())
 
         views.setOnClickPendingIntent(R.id.copy_button, getPendingIntent(context, ACTION_COPY) )
 
@@ -70,11 +71,38 @@ class DeviceInfoWidget : AppWidgetProvider() {
         if (ACTION_COPY == intent?.action) {
             val clipboardManager = context?.getSystemService(Context.CLIPBOARD_SERVICE)
             if (clipboardManager is ClipboardManager) {
-                val clipData = ClipData.newPlainText("DeviceInfo", "Model: ${Build.MODEL}\nBrand: ${Build.BRAND}")
+                val clipData = ClipData.newPlainText("DeviceInfo", "Model: ${Build.MODEL}\nBrand: ${Build.BRAND}\nVersion: ${getVersionInfo()}")
                 clipboardManager.setPrimaryClip(clipData)
             }
         }
     }
 
+    private fun getVersionInfo() : String {
+        val sdkInt : String = Build.VERSION.SDK_INT.toString()
+        var sdkName : String? = null;
+        val fields =
+            Build.VERSION_CODES::class.java.fields
+        for (field in fields) {
+            val fieldName = field.name
+            var fieldValue = -1
+            try {
+                fieldValue = field.getInt(Any())
+            } catch (e: IllegalArgumentException) {
+                e.printStackTrace()
+            } catch (e: IllegalAccessException) {
+                e.printStackTrace()
+            } catch (e: NullPointerException) {
+                e.printStackTrace()
+            }
+            if (fieldValue == Build.VERSION.SDK_INT) {
+                sdkName = fieldName
+            }
+        }
 
+        return if (sdkName != null) {
+            "$sdkInt($sdkName)"
+        } else {
+            sdkInt
+        }
+    }
 }
