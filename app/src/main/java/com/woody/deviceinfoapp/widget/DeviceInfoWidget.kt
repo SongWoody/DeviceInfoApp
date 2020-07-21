@@ -51,6 +51,7 @@ class DeviceInfoWidget : AppWidgetProvider() {
         views.setTextViewText(R.id.model_content, Build.MODEL)
         views.setTextViewText(R.id.brand_content, Build.BRAND)
         views.setTextViewText(R.id.version_content, getVersionInfo())
+        views.setTextViewText(R.id.release_content, Build.VERSION.RELEASE)
 
         views.setOnClickPendingIntent(R.id.copy_button, getPendingIntent(context, ACTION_COPY) )
 
