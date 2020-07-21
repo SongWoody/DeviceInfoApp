@@ -27,6 +27,12 @@ class MainViewModel(private val clipboard : ClipboardProvider) : ViewModel() {
         }
     }
 
+    val androidVersionRelease: MutableLiveData<CharSequence> by lazy {
+        MutableLiveData<CharSequence>().apply {
+            value = Build.VERSION.RELEASE
+        }
+    }
+
     val androidVersionNumber: MutableLiveData<CharSequence> by lazy {
         MutableLiveData<CharSequence>().apply {
             val sdkInt = Build.VERSION.SDK_INT.toString()

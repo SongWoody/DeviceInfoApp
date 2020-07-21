@@ -3,6 +3,7 @@
     <string name="device_model">Device Model</string>
     <string name="device_brand">Device Brand</string>
     <string name="android_version">Android Version</string>
+    <string name="android_release">Android Release</string>
     <string name="widget_model_title">Model:</string>
     <string name="widget_brand_title">Brand:</string>
     <string name="widget_version_title">Version:</string>
